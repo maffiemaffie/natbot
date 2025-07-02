@@ -35,6 +35,7 @@ const getBodyForMessage = (message) => {
 };
 
 const getGrokResponse = (input) => {
+  console.log("im grokking");
   const message = `
   The current time is ${input.currentTime}.
 
