@@ -193,6 +193,7 @@ const cues = [
 
       const thinking = await webhook.send({ content: "thinking..." });
       const response = await grok.getGrokResponse(grokInput);
+      console.log(response);
       if (!/[no response]/.test(response)) {
         await webhook.send({ content: response });
       }

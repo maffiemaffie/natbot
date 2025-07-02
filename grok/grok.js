@@ -35,6 +35,7 @@ const getBodyForMessage = (message) => {
 };
 
 const getGrokResponse = (input) => {
+  console.log("preparing message for grok");
   const message = `
   The current time is ${input.currentTime}.
 
@@ -52,6 +53,7 @@ const getGrokResponse = (input) => {
 }
 
 const sendToGrok = async (message) => {
+  console.log("sending message to grok");
   const body = getBodyForMessage(message);
   const response = await fetch(url, {
     method: 'POST',
