@@ -3,6 +3,7 @@ const grok = require('../grok/grok.js');
 
 const grokOnly = [
   "1361179249779675238",
+  "1032611403829354526",
 ];
 
 const updoot = async (msg) => {
