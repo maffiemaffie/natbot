@@ -150,6 +150,7 @@ const cues = [
       return /grok/i.test(msg.content);
     },
     async execute(msg) {
+      console.log("im grokking");
       const toUnix = (isoString) => Math.floor(new Date(isoString).getTime() / 1000);
 
       const grokInput = {
