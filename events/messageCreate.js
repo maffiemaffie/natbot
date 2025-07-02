@@ -20,8 +20,6 @@ module.exports = {
   execute(msg) {
     if (disabled.some(condition => condition(msg))) return;
 
-    if (msg.guild.id != 836303195335688232) updoot(msg);
-
     if (msg.author.id == process.env.CLIENT) return;
     for (let cue of cues) {
       if (cue.screen(msg)) cue.execute(msg);
@@ -32,6 +30,15 @@ module.exports = {
 const toWords = str => str.split(/\W+/).map(w => w.toLowerCase());
 
 const cues = [
+  { // updoot
+    screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
+      return true;
+    },
+    execute(msg){
+      updoot(msg);
+    }
+  },
   { // pine sol
     screen(msg) {
       if (grokOnly.includes(msg.guildId)) return false;
@@ -40,7 +47,6 @@ const cues = [
       return true;
     },
     execute(msg) {
-      ;
       msg.reply("HEY I'M CALLING POISON CONTROL!!!!! 🙀🙀🙀");
     }
   },
