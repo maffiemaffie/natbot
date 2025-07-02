@@ -186,7 +186,10 @@ const cues = [
         createdAt: toUnix(m.createdAt.toISOString()),
       }));
 
-      const webhook = await msg.channel.createWebhook({
+      const webhooks = await msg.channel.fetchWebhooks();
+      let webhook = webhooks.find(wh => wh.token);
+
+      if (!webhook) webhook = await msg.channel.createWebhook({
         name: "grok",
         avatar: "https://pbs.twimg.com/profile_images/1893219113717342208/Vgg2hEPa_400x400.jpg",
       })
@@ -194,11 +197,11 @@ const cues = [
       const thinking = await webhook.send({ content: "thinking..." });
       const response = await grok.getGrokResponse(grokInput);
       console.log(response);
-      if (!/[no response]/.test(response)) {
+      // if (!/[no response]/.test(response)) {
         await webhook.send({ content: response });
-      }
+      // }
       await thinking.delete();
-      await webhook.delete();
+      // await webhook.delete();
     }
   }
 ];
