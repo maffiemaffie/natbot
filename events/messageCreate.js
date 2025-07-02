@@ -187,7 +187,7 @@ const cues = [
       }));
 
       const webhooks = await msg.channel.fetchWebhooks();
-      let webhook = webhooks.find(wh => wh.token);
+      let webhook = webhooks.find(wh => wh.name == "grok");
 
       if (!webhook) webhook = await msg.channel.createWebhook({
         name: "grok",
