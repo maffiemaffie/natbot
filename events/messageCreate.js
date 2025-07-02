@@ -1,6 +1,10 @@
 const { Events } = require('discord.js');
 const grok = require('../grok/grok.js');
 
+const grokOnly = [
+  "1361179249779675238",
+];
+
 const updoot = async (msg) => {
   await msg.react("<:upvote:1069229932829478992>");
   await msg.react("<:downvote:1069229943923421295>");
@@ -29,6 +33,7 @@ const toWords = str => str.split(/\W+/).map(w => w.toLowerCase());
 const cues = [
   { // pine sol
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       if (!msg.content.includes("pine")) return false;
       if (!msg.content.includes("sol")) return false;
       return true;
@@ -40,6 +45,7 @@ const cues = [
   },
   { // nat
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       return msg.content.includes("nat");
     },
     async execute(msg) {
@@ -50,6 +56,7 @@ const cues = [
   },
   { // metal gear
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       const words = toWords(msg.content);
       if (words.includes("mgs")) return true;
       if (words.includes("metal") && words.includes("gear")) return true;
@@ -65,6 +72,7 @@ const cues = [
   },
   { // orzo 
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       const words = toWords(msg.content);
       return words.includes("orzo");
     },
@@ -74,6 +82,7 @@ const cues = [
   },
   { // bpd
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       const words = toWords(msg.content);
       if (words.includes("bpd")) return true;
       if (words.includes("borderline")) return true;
@@ -87,6 +96,7 @@ const cues = [
   },
   { // maffie
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       return msg.content.includes("maffie");
     },
     execute(msg) {
@@ -95,6 +105,7 @@ const cues = [
   },
   { // yusef
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       return msg.content.includes("yusef");
     },
     execute(msg) {
@@ -103,6 +114,7 @@ const cues = [
   },
   { // music 
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       const words = toWords(msg.content);
       return words.includes("music");
     },
@@ -112,6 +124,7 @@ const cues = [
   },
   { // cfa
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       const words = toWords(msg.content);
       if (words.includes('fil') && msg.content.includes('chi')) return true;
       if (words.includes('cfa')) return true;
@@ -123,6 +136,7 @@ const cues = [
   },
   { // i hardly know her 
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       return /er\b/i.test(msg.content);
     },
     execute(msg) {
@@ -137,6 +151,7 @@ const cues = [
   },
   { // do u hate me
     screen(msg) {
+      if (grokOnly.includes(msg.guildId)) return false;
       return /do (yo)?u hate me/i.test(msg.content);
     },
     execute(msg) {
