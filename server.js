@@ -1,16 +1,18 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 
-const client = new Client({ 
-  intents: [
-    GatewayIntentBits.Guilds,
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers
-  ]});
+	]
+});
 
 client.commands = new Collection();
 
@@ -44,24 +46,13 @@ for (const file of eventFiles) {
 // Log in to Discord with your client's token
 client.login(process.env.TOKEN);
 
+const app = express()
+const port = process.env.PORT || 4000
 
-
-
-// Require the framework and instantiate it
-const fastify = require('fastify')({ logger: true })
-
-// Declare a route
-fastify.get('/', async (request, reply) => {
-  return `eat shit ^_^`;
+app.get('/', (req, res) => {
+	res.send('Hello World!')
 })
 
-// Run the server!
-const start = async () => {
-  try {
-    await fastify.listen({ port: 3000 })
-  } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+app.listen(port, () => {
+	console.log(`Example app listening on port ${port}`)
+})
