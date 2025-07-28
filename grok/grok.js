@@ -16,10 +16,10 @@ const getBodyForMessage = (message) => {
         'role': 'system',
         'content': GROK_PROMPT
       },
-      {
-        'role': 'user',
-        'content': message
-      }
+      // {
+      //   'role': 'user',
+      //   'content': message
+      // }
     ],
     'temperature': 0.7
   }
