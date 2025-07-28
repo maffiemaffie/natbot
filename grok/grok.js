@@ -2,7 +2,7 @@ const GROK_PROMPT = require("./grok-prompt.js");
 const GROK_EXPERIMENTAL = require("./grok-prompt-experimental.js");
 
 const url = 'https://openrouter.ai/api/v1/chat/completions';
-const model = 'deepseek/deepseek-r1-0528:free';
+const model = 'google/gemini-2.0-flash-exp:free';
 const headers = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${process.env.GROK_KEY}`
